@@ -1,0 +1,22 @@
+_schema-version: "3.1"
+ID: d-01.demo.sample
+version: 0.0.1
+parameters:
+  hcp-deployer-version: '1.1.0'
+  before-all:
+  - buildpack: nodejs_buildpack
+    meomory: 512M
+    tasks: 
+      - name: task-abc-1
+        commands: nmp install
+        
+modules:
+  - name: my-node-app-01
+    type: com.sap.java
+    path: ./
+    parameters:
+      buildpack: nodejs_buildpack
+      memory: 512M
+      tasks:
+        - name: task-abc-1
+          command: npm install
